@@ -35,7 +35,7 @@ public function action_about(){
 public function action_color(){
     $data = array();
     $this->template-> title ="Color";
-    $this->template-> content = View:: forge ('home/color', $data); 
+    $this->template-> content = View:: forge ('color/color', $data); 
     $this-> template->css= "style.css";
     
 
@@ -81,7 +81,7 @@ public function action_color_table(){
             'colors' => $colors
         );
         // view file path however we end up doing it, passing in array instead of object for view
-        $color_table = View::forge('home/color', $data);
+        $color_table = View::forge('color/color', $data);
 
         // Display Color Table
         $this->template->title = "Color Table";

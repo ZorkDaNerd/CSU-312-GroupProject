@@ -19,9 +19,9 @@
 
 <nav>
     <ul>
-        <li><a href="https://www.cs.colostate.edu:4444/~zork9898/m1/index/necrocont/index.php "> Home</a></li>
-        <li><a href="https://www.cs.colostate.edu:4444/~zork9898/m1/index/necrocont/about.php "> About</a></li>
-        <li><a href="https://www.cs.colostate.edu:4444/~zork9898/m1/index/necrocont/color.php "> Color Corrdinator</a></li>
+        <li><a href="https://www.cs.colostate.edu:4444/~zork9898/m2/index/necrocont/index.php "> Home</a></li>
+        <li><a href="https://www.cs.colostate.edu:4444/~zork9898/m2/index/necrocont/about.php "> About</a></li>
+        <li><a href="https://www.cs.colostate.edu:4444/~zork9898/m2/index/necrocont/color.php "> Color Corrdinator</a></li>
 </ul>
 </nav>
 
