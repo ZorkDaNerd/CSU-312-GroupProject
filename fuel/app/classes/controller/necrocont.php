@@ -33,6 +33,17 @@ public function action_about(){
 }
 
 public function action_color(){
+    // $data = array();
+    // $this->template-> title ="Color";
+    // $this->template-> content = View:: forge ('home/color', $data); 
+    // $this-> template->css= "style.css";
+    
+    // echo Form::open(array('method' => 'get', 'action' => 'necrocont/action_color_table'));
+    // echo "Rows and Columns: " . Form::input('rowscolumns', '', array('type' => 'number')) . "<br>";
+    // echo "Colors: " . Form::input('colors', '', array('type' => 'number')) . "<br>";
+    // echo Form::submit('submit', 'Submit');
+    // echo Form::close();
+    $new_post_value = 0;
     $data = array();
     $this->template-> title ="Color";
     $this->template-> content = View:: forge ('color/color', $data); 
@@ -42,51 +53,15 @@ public function action_color(){
 
 }
 
-public function action_color_table(){
-    // $data = array();
-    // $this->template-> title ="contact";
-    // $this->template-> content ="View:: forge ('color/contact', $data)"; 
-    // $this-> template->css= "pro.css";
-    
-    // Check if form has been submitted
-    if(Input::method() == 'GET')
-    {
-        // Create Rows/Columns and Colors variables
-        $rowsandcols = Input::get('rowscolumns');
-        $colors = Input::get('colors');
-
-        // Validate User Input
-        if(!is_numeric($rowsandcols) || !is_numeric($colors))
-        {
-            echo "Error: Please return a valid number of columns and rows.";
-            return;
-        }
-        if($rowsandcols > 26)
-        {
-            echo "Error: Please enter no more than 26 rows and columns in total.";
-            return;
-        }
-        if($colors > 10)
-        {
-            echo "Error: Please enter no more than 10 colors in total.";
-            return;
-        }
-        if($rowsandcols < 1 || $colors < 1)
-        {
-            echo "Error: Please make sure you are entering integers greater than or equal to one.";
-            return;
-        }
-        $data = array(
-            'rowscolumns' => $rowsandcols,
-            'colors' => $colors
-        );
-        // view file path however we end up doing it, passing in array instead of object for view
-        $color_table = View::forge('color/color', $data);
-
-        // Display Color Table
-        $this->template->title = "Color Table";
-        $this->template->content = $color_table;
-        $this->template->css = "style.css";
-    }
+public function post_color(){
+    $rows = input::post('rows') ? Input::post('rows') : 0;
+    $color = input::post('color') ? Input::post('color') : 0;
+    $data = array();
+    $this->template-> title ="Color";
+    $this->template-> content = View:: forge ('color/fail', $data); 
+    $this->template->css= "style.css";
+    $myvalue = input::post('myvalue');
+    //$new_post_value = $myvalue;
 }
+
 }
