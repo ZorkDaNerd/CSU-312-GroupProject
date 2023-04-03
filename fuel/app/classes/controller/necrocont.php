@@ -38,12 +38,7 @@ public function action_color(){
     $this->template-> content = View:: forge ('home/color', $data); 
     $this-> template->css= "style.css";
     
-    echo Form::open(array('method' => 'get', 'action' => 'necrocont/action_color_table'));
-    echo "Rows and Columns: " . Form::input('rowscolumns', '', array('type' => 'number')) . "<br>";
-    echo "Colors: " . Form::input('colors', '', array('type' => 'number')) . "<br>";
-    echo Form::submit('submit', 'Submit');
-    echo Form::close();
-    
+
 
 }
 
