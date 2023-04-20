@@ -1,8 +1,11 @@
 .person
 {
     width: 100%;
+    margin-bottom: 5%;
 }
 .person img
 {
     float: left;
+    margin-right: 2%;
+    margin-bottom: 5%;
 }
