@@ -63,7 +63,7 @@ public function post_color(){
     $this->template->css= "style.css";
     // $myvalue = input::post('myvalue');
 
-    if($rows <= 26 && $cols <= 26 && $color <=10 ){
+    if($rows <= 26 && $rows >= 1 && $cols <= 26 && $cols >= 1 && $color <=10 && $color >= 1){
     $this->template-> title ="Color";
     $this->template-> content = View:: forge ('color/success', $data); 
     $this->template->css= "style.css";
