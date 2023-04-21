@@ -69,6 +69,10 @@ ul {
 	display: none;
   }
 
+  .hide-ul {
+	display: none;
+  }
+
   .black-white {
 	filter: grayscale(100%);
   }
@@ -92,5 +96,8 @@ button:active {
 	  display: none;
 	}
   }
+
+
+
 
   tar -cvf [EID].tar local_html/m1/fuel/app/classes/controller/necrocont.php local_html/m1/fuel/app/views/template.php local_html/m1/fuel/app/views/home local_html/m1/fuel/app/views/about local_html/m1/index.php local_html/m1/assets/ local_html/m1/fuel/app/config/routes.php 

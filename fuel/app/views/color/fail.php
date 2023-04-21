@@ -5,21 +5,20 @@
 
 <button id="print-btn">Print</button>
 <script>
-    const printBtn = document.querySelector('#print-btn');
-    const pageBody = document.querySelector('body');
-    const pageNav = document.querySelector('nav');
-    const ul = document.querySelector('ul');
+  const printBtn = document.querySelector('#print-btn');
+const pageBody = document.querySelector('body');
+const pageNav = document.querySelector('nav');
+const ul = document.querySelector('ul');
 
-    printBtn.addEventListener('click', function() {
-      pageBody.classList.add('black-white');
-      pageNav.classList.add('hide-nav');
-      ul.classList.add('hide-ul');
-      window.print();
-      pageBody.classList.remove('black-white');
-      pageNav.classList.remove('hide-nav');
-      ul.classList.remove('hide-ul');
-    });
-  </script>
+printBtn.addEventListener('click', function() {
+  pageBody.classList.add('black-white');
+  pageNav.classList.add('hide-nav');
+  ul.classList.add('hide-ul');
+});
+  
+</script>
+
+
   <form action='color' method='post'>
     <p>num rows: <input type='number' name='rows' id='rows'/></p>
     <p>num color: <input type='number' name='color' id='color'/></p>
