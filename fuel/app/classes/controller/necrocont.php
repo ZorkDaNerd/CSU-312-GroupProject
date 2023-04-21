@@ -55,13 +55,28 @@ public function action_color(){
 
 public function post_color(){
     $rows = input::post('rows') ? Input::post('rows') : 0;
+    $cols = input::post('cols') ? Input::post('cols') : 0;
     $color = input::post('color') ? Input::post('color') : 0;
     $data = array();
     $this->template-> title ="Color";
-    $this->template-> content = View:: forge ('color/fail', $data); 
+    $this->template-> content = View:: forge ('color/color', $data); 
     $this->template->css= "style.css";
-    $myvalue = input::post('myvalue');
+    // $myvalue = input::post('myvalue');
+
+    if($rows <= 26 && $cols <= 26 && $color <=10 ){
+    $this->template-> title ="Color";
+    $this->template-> content = View:: forge ('color/success', $data); 
+    $this->template->css= "style.css";
+    }
+    else{
+        $this->template-> title ="Color";
+        $this->template-> content = View:: forge ('color/fail', $data); 
+        $this->template->css= "style.css";
+    }
+
+
     //$new_post_value = $myvalue;
+
 }
 
 }
