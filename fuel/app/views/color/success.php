@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if (isset($rows) && isset($cols)) {
     $alphabet = range('A', 'Z');
     $size = min($rows, $cols);
-
+//    a wild benito has appeared
     echo '<table>';
 
     // generate the header row with letters A to Z

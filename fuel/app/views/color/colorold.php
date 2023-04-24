@@ -14,7 +14,7 @@
       pageBody.classList.add('black-white');
       pageNav.classList.add('hide-nav');
       ul.classList.add('hide-ul');
-      window.print();
+      //window.print();
       pageBody.classList.remove('black-white');
       pageNav.classList.remove('hide-nav');
       ul.classList.remove('hide-ul');
