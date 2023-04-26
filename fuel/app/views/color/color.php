@@ -30,7 +30,7 @@
     <p>num rows: <input type='number' name='rows' id='rows' class ="formcolor"/> enter a number between 1 and 26</p>
     <p>num columns: <input type='number' name='cols' id='cols' class ="formcolor" /> enter a number between 1 and 26</p>
     <p>num color: <input type='number' name='color' id='color' class ="formcolor"/> enter a number between 1 and 10</p>
-    <p><input type='submit'/></p>
+    <p><input type='submit' class ="formcolor"/></p>
     <?php
 
     echo Form::open(array('action' => 'index/necrocont/color',

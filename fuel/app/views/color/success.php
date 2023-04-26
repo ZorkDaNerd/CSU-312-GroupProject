@@ -3,6 +3,11 @@
 
 <h1> Color Coordinator pass </h1> 
 <style>
+  .warning {
+  display: none;
+  color: red;
+  font-size: 12px;
+}
   table {
       width: 80%;
       border-collapse: collapse;
@@ -80,14 +85,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <td class="left-col">Color <?php echo $i+1; ?>
       <select class = "colordrop">
           <?php foreach ($colors as $c) { ?>
-            <option value="<?php echo $c; ?>"><?php echo $c; ?></option>
+            <option value="<?php echo $c; ?>" <?php echo ($c === $colors[$i]) ? 'selected' : ''; ?>><?php echo $c; ?></option>
           <?php } ?>
         </select>
+        <span class="warning">Please select a different color.</span>
+
           </td>
       <td class="right-col"><span style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span> <?php echo $colors[$i]; ?></td>
     </tr>
   <?php } ?>
 </table> 
+
 <br> 
 <br> 
 <br> 
@@ -120,7 +128,20 @@ if (isset($rows) && isset($cols)) {
 }
 ?>
 
-
+<script>
+ function checkSelection(selectElement) {
+    var selectedColor = selectElement.value;
+    var siblingColor = selectElement.parentNode.nextElementSibling.querySelector("span").style.backgroundColor;
+    if (selectedColor === siblingColor) {
+      selectElement.value = "";
+      selectElement.style.backgroundColor = "red";
+      selectElement.parentNode.querySelector(".warning").style.display = "block";
+    } else {
+      selectElement.style.backgroundColor = "";
+      selectElement.parentNode.querySelector(".warning").style.display = "none";
+    }
+  }
+</script>
 
 <!-- //     $rowsandcols = isset($rowsandcols) ? $rowsandcols : '';
 //     $colors = isset($colors) ? $colors : '';
