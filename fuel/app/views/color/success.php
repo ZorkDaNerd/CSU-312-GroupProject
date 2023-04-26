@@ -21,6 +21,11 @@
   .right-col {
       width: 80%;
   }
+
+  .colordrop{
+    background-color: black;
+    color: white;
+  }
 </style>
 
 <button id="print-btn">Print</button>
@@ -72,7 +77,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  <table>
   <?php for ($i = 0; $i < $color; $i++) { ?>
     <tr>
-      <td class="left-col">Color <?php echo $i+1; ?></td>
+      <td class="left-col">Color <?php echo $i+1; ?>
+      <select class = "colordrop">
+          <?php foreach ($colors as $c) { ?>
+            <option value="<?php echo $c; ?>"><?php echo $c; ?></option>
+          <?php } ?>
+        </select>
+          </td>
       <td class="right-col"><span style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span> <?php echo $colors[$i]; ?></td>
     </tr>
   <?php } ?>
