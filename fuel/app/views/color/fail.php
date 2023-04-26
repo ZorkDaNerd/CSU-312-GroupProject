@@ -17,8 +17,8 @@
     ul.classList.add('hide-ul');
     button.classList.add('hide-btn');
   });
-  
 </script>
+
 
 
   <form action='color' method='post'>
