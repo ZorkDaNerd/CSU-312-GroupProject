@@ -6,6 +6,8 @@
     <meta name="author" content="Lino Barrios">
     <meta name="description" content="Template  for project ">
     <?php echo Asset::css("style.css"); ?>
+    <link rel="icon" href="https://game-icons.net/icons/000000/transparent/1x1/lorc/potion-ball.png">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
 <header>

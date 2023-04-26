@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<link rel="icon" href="https://game-icons.net/icons/000000/transparent/1x1/lorc/potion-ball.png">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <h1> Color Coordinator pass </h1> 
 <style>
