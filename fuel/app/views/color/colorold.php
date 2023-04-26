@@ -5,21 +5,23 @@
 
 <button id="print-btn">Print</button>
 <script>
-    const printBtn = document.querySelector('#print-btn');
-    const pageBody = document.querySelector('body');
-    const pageNav = document.querySelector('nav');
-    const ul = document.querySelector('ul');
+    
 
-    printBtn.addEventListener('click', function() {
-      pageBody.classList.add('black-white');
-      pageNav.classList.add('hide-nav');
-      ul.classList.add('hide-ul');
-      window.print();
-      pageBody.classList.remove('black-white');
-      pageNav.classList.remove('hide-nav');
-      ul.classList.remove('hide-ul');
-    });
+  const printBtn = document.querySelector('#print-btn');
+  const pageBody = document.querySelector('body');
+  const pageNav = document.querySelector('nav');
+  const ul = document.querySelector('ul');
+  const button = document.querySelector('button');
+
+  printBtn.addEventListener('click', function() {
+    pageBody.classList.add('black-white');
+    pageNav.classList.add('hide-nav');
+    ul.classList.add('hide-ul');
+    button.classList.add('hide-btn');
+    
+  });
   </script>
+
 
 
 <?php
