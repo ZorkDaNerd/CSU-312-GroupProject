@@ -63,38 +63,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   );?>
 
 <body>
-<!-- <?php if (isset($rows) && isset($cols) && isset($color)) { ?>
-  <table>
-      <?php for ($i = 0; $i < $color; $i++) { ?>
-        <tr>
-         <td class="left-col">Color <?php echo $i+1; ?></td>
-        <td class="right-col">
-            <table>
-         <?php for ($j = 0; $j < $rows; $j++) { ?>
-                <tr>
-                <?php for ($k = 0; $k < $cols; $k++) { ?>
-                <td><?php echo $colors[$i]; ?></td>
-                <?php } ?>
-                </tr>
-            <?php } ?>
-            </table>
-            </td>
-          </tr>
-      <?php } ?>
-  </table>
+ <?php if (isset($rows) && isset($cols) && isset($color)) { ?>
 <?php } else { ?>
   <p>Please enter the number of rows, columns, and colors in the form above.</p>
-<?php } ?> -->
+<?php } ?> 
 
 
-<table>
+ <table>
   <?php for ($i = 0; $i < $color; $i++) { ?>
     <tr>
       <td class="left-col">Color <?php echo $i+1; ?></td>
       <td class="right-col"><span style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span> <?php echo $colors[$i]; ?></td>
     </tr>
   <?php } ?>
-</table>
+</table> 
 <br> 
 <br> 
 <br> 
@@ -197,7 +179,28 @@ if (isset($rows) && isset($cols)) {
 //     }
 // ?>
 
-// 
+
+
+
+  <table>
+<?php for ($i = 0; $i < $color; $i++) { ?>
+        <tr>
+         <td class="left-col">Color <?php echo $i+1; ?></td>
+        <td class="right-col">
+            <table>
+         <?php for ($j = 0; $j < $rows; $j++) { ?>
+                <tr>
+                <?php for ($k = 0; $k < $cols; $k++) { ?>
+                <td><?php echo $colors[$i]; ?></td>
+                
+                <?php } ?>
+                </tr>
+            <?php } ?>
+            </table>
+            </td>
+          </tr>
+      <?php } ?>
+  </table> 
 
 
 
