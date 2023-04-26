@@ -85,13 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <?php for ($i = 0; $i < $color; $i++) { ?>
     <tr>
       <td class="left-col">Color <?php echo $i+1; ?>
-      <select class = "colordrop">
+      <select class = "colordrop" onchange="checkSelection(this)" title = "selectcolor">
           <?php foreach ($colors as $c) { ?>
             <option value="<?php echo $c; ?>" <?php echo ($c === $colors[$i]) ? 'selected' : ''; ?>><?php echo $c; ?></option>
           <?php } ?>
         </select>
         <span class="warning">Please select a different color.</span>
-
           </td>
       <td class="right-col"><span style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span> <?php echo $colors[$i]; ?></td>
     </tr>
