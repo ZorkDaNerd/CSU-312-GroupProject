@@ -21,10 +21,18 @@
 
 return array(
 	'default' => array(
-		'connection' => array(
-			'dsn'      => 'mysql:host=localhost;dbname=fuel_dev',
-			'username' => 'root',
-			'password' => 'root',
+		'connection'  => array(
+			'dsn'        => 'mysql:host=faure.cs.colostate.edu;dbname= zork9898',
+			'username'   => 'zork9898',
+			'password'   => '832933809',
+		),
+	),
+
+	'default' => array(
+		'connection'  => array(
+			'dsn'        => 'mysql:host=faure.cs.colostate.edu;dbname= linobarr',
+			'username'   => 'linobarr',
+			'password'   => '835267322',
 		),
 	),
 );
