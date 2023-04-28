@@ -10,6 +10,9 @@
   color: red;
   font-size: 12px;
 }
+.colordrop[style*="background-color: red;"] {
+  border: 1px solid red;
+}
   table {
       width: 80%;
       border-collapse: collapse;
@@ -82,7 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
  <table>
-  <?php for ($i = 0; $i < $color; $i++) { ?>
+  <?php for ($i = 0; $i < $color; $i++) { 
+    ?>
     <tr>
       <td class="left-col">Color <?php echo $i+1; ?>
       <select class = "colordrop" onchange="checkSelection(this)" title = "selectcolor">
@@ -130,18 +134,27 @@ if (isset($rows) && isset($cols)) {
 ?>
 
 <script>
- function checkSelection(selectElement) {
-    var selectedColor = selectElement.value;
-    var siblingColor = selectElement.parentNode.nextElementSibling.querySelector("span").style.backgroundColor;
-    if (selectedColor === siblingColor) {
-      selectElement.value = "";
+function checkSelection(selectElement) {
+  var colors = <?php echo json_encode($colors); ?>;
+  console.log('checkSelection called');
+  var selectedColor = selectElement.value;
+  var selectIndex = selectElement.parentNode.parentNode.rowIndex - 1;
+  var warningSpan = selectElement.parentNode.querySelector(".warning");
+  // Check if the selected color has already been selected
+  for (var i = 0; i < colors.length; i++) {
+    if (i !== selectIndex && selectedColor === colors[i]) {
       selectElement.style.backgroundColor = "red";
-      selectElement.parentNode.querySelector(".warning").style.display = "block";
-    } else {
+      warningSpan.style.display = "block";
+      return;
+    }
+
+    else{  
       selectElement.style.backgroundColor = "";
-      selectElement.parentNode.querySelector(".warning").style.display = "none";
+  warningSpan.style.display = "none";
     }
   }
+}
+
 </script>
 
 <!-- //     $rowsandcols = isset($rowsandcols) ? $rowsandcols : '';
