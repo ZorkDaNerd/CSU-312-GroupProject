@@ -43,8 +43,44 @@
       border: 1px solid gray;
   }
 
+  .red{
+    background-color: red;
+  }
+
+  .green{
+    background-color: green;
+  }
+
+  .blue{
+    background-color: blue;
+  }
+
+  .yellow{
+    background-color: yellow;
+  }
+
+  .purple{
+    background-color: purple;
+  }
+
+  .orange{
+    background-color: orange;
+  }
+
+  .teal{
+    background-color: teal;
+  }
+
   .pink{
     background-color: pink;
+  }
+
+  .gray{
+    background-color: gray;
+  }
+
+  .brown{
+    background-color: brown;
   }
 </style>
 
