@@ -36,6 +36,16 @@
     background-color: black;
     color: white;
   }
+  
+    
+
+  #main{
+      border: 1px solid gray;
+  }
+
+  .pink{
+    background-color: pink;
+  }
 </style>
 
 <button id="print-btn">Print</button>
@@ -155,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if (isset($rows) && isset($cols)) {
     $alphabet = range('A', 'Z');
     $size = min($rows, $cols);
-    echo '<table>';
+    echo '<table id = main>';
 
     // generate the header row with letters A to Z
     echo '<tr><td></td>';
@@ -178,6 +188,36 @@ if (isset($rows) && isset($cols)) {
     echo '<p>Please enter the number of rows and columns in the form above.</p>';
 }
 ?>
+  
+<!--Below is the script for changing colors in the table-->
+
+<script>
+  var color = ".pink";
+  var colorName = "pink";
+  var prev = "pink";
+  $(document).ready(function(){
+  
+      var row2 = 0;
+      var cell2 = 0;
+      const Main = document.getElementById('main').rows[row2].cells[cell2];
+      var row2up = row2 + 1;
+      var row2down = row2 - 1;
+      $("#main td").click(function(){
+          var clicked2 = $(this);
+          var cellIn = this.cellIndex;
+          
+          
+          if(clicked2.is(color)){
+              $(clicked2).removeAttr('class');
+          }
+          else{
+              $(clicked2).attr('class', colorName);
+              
+          }
+      });
+
+  });
+  </script>
 
 
 <script>
