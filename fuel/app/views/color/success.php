@@ -243,26 +243,40 @@ if (isset($rows) && isset($cols)) {
   let colorName = "red";
   let prev = "red";
   //insted of clicking the first table make it based off the radio buttons
+//   $(document).ready(function(){
+//   $("input[type='radio']").change(function(){
+//     let clicked = $(this).closest('td');
+//     let cellIn = clicked[0].cellIndex;
+//     let rowIn = clicked[0].parentNode.rowIndex;
+//     if(clicked.is(color)){
+//       //$(clicked).removeAttr('class');
+//       // color = "." + clicked.attr('class');
+//       // colorName = clicked.attr('class');
+//       color = "." + this.closest('select').querySelector('.colordrop').value;
+//       colorName = this.closest('select').querySelector('.colordrop').value;
+//     }
+//     else{
+//       //$(clicked).attr('class', colorName);
+//       // color = "." + clicked.attr('class');
+//       // colorName = clicked.attr('class');
+//       color = "." + this.closest('select').querySelector('.colordrop').value;
+//       colorName = this.closest('select').querySelector('.colordrop').value;
+//     }
+//     prev = colorName;
+//   });
+// });
+
+  // need to make it update when color is changed on selected row in dropdown
   $(document).ready(function(){
   $("input[type='radio']").change(function(){
+    let selectedColor = $(this).closest('tr').find('.colordrop').val();
     let clicked = $(this).closest('td');
     let cellIn = clicked[0].cellIndex;
     let rowIn = clicked[0].parentNode.rowIndex;
-    if(clicked.is(color)){
-      //$(clicked).removeAttr('class');
-      // color = "." + clicked.attr('class');
-      // colorName = clicked.attr('class');
-      color = "." + this.closest('td').querySelector('.colordrop').value;
-      colorName = this.closest('td').querySelector('.colordrop').value;
-    }
-    else{
-      //$(clicked).attr('class', colorName);
-      // color = "." + clicked.attr('class');
-      // colorName = clicked.attr('class');
-      color = "." + this.closest('td').querySelector('.colordrop').value;
-      colorName = this.closest('td').querySelector('.colordrop').value;
-    }
-    prev = colorName;
+
+      color = "." + selectedColor;
+      colorName = selectedColor;
+      prev = colorName;
   });
 });
 
