@@ -43,14 +43,6 @@
 		</p>
 		</div>
 		<div class="person">
-		<?php echo Asset::img("cooper.png"); ?>
-		<h2>Cooper Hall</h2>
-		<p>
-			I am the Chief Arcane Officer (CAO) of Necronomicompany, I do the spells. What more do you want from me<br/><br/>
-			I also do computer stuff
-		</p>
-		</div>
-		<div class="person">
 		<?php echo Asset::img("adam.png"); ?>
 		<h2>Adam Aouaj</h2>
 		<p>
