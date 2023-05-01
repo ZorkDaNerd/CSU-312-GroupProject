@@ -99,13 +99,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <td class="right-col"><span style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span> <?php echo $colors[$i]; ?></td>
     </tr>
   <?php } ?>
-</table>   -->
+</table>    -->
 
 
 <!-- this is where the color dropdowns are made that now changes the color of teh right side when a new one is picked  -->
-<table>
+  <table>
   <?php for ($i = 0; $i < $color; $i++) { ?>
     <tr>
+      <td>
+        <?php
+          if ($i == 0) {
+            echo '<input type="radio" name="color" value="' . $colors[$i] . '" checked>';
+          } else {
+            echo '<input type="radio" name="color" value="' . $colors[$i] . '">';
+          }
+          ?>
+      </td>
       <td class="left-col">Color <?php echo $i+1; ?>
         <select class="colordrop" onchange="updateColor(this)" title="selectcolor">
           <?php foreach ($colors as $c) { ?>
@@ -129,13 +138,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     colorLabel.textContent = select.value;
   }
   
+</script>  
+
+
+
+ 
 </script>
-
-
-
-
-
-
 
 
 
