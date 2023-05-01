@@ -291,6 +291,7 @@ if (isset($rows) && isset($cols)) {
       $("#main td").click(function(){
           let clicked2 = $(this);
           let cellIn = this.cellIndex;
+          let rowIn = this.parentNode.rowIndex; //rowIn and cellIn will be needed for coordinates later
           
           if(cellIn == 0 || this.parentNode.rowIndex == 0){
             return;
