@@ -83,8 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <p>Please enter the number of rows, columns, and colors in the form above.</p>
 <?php } ?> 
 
-
- <table>
+<!-- 
+  <table>
   <?php for ($i = 0; $i < $color; $i++) { 
     ?>
     <tr>
@@ -94,17 +94,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <option value="<?php echo $c; ?>" <?php echo ($c === $colors[$i]) ? 'selected' : ''; ?>><?php echo $c; ?></option>
           <?php } ?>
         </select>
-        <span class="warning-color">Please select a different color.</span>
+        
           </td>
       <td class="right-col"><span style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span> <?php echo $colors[$i]; ?></td>
     </tr>
   <?php } ?>
-</table> 
+</table>   -->
 
 
+<!-- this is where the color dropdowns are made that now changes the color of teh right side when a new one is picked  -->
+<table>
+  <?php for ($i = 0; $i < $color; $i++) { ?>
+    <tr>
+      <td class="left-col">Color <?php echo $i+1; ?>
+        <select class="colordrop" onchange="updateColor(this)" title="selectcolor">
+          <?php foreach ($colors as $c) { ?>
+            <option value="<?php echo $c; ?>" <?php echo ($c === $colors[$i]) ? 'selected' : ''; ?>><?php echo $c; ?></option>
+          <?php } ?>
+        </select>
+      </td>
+      <td class="right-col">
+        <span class="color-box" style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="color-label"><?php echo $colors[$i]; ?></span>
+      </td>
+    </tr>
+  <?php } ?>
+</table>
+
+<script>
+  function updateColor(select) {
+    var colorBox = select.parentNode.parentNode.querySelector('.color-box');
+    var colorLabel = select.parentNode.parentNode.querySelector('.color-label');
+    colorBox.style.backgroundColor = select.value;
+    colorLabel.textContent = select.value;
+  }
+  
+</script>
+
+
+
+
+
+
+
+
+
 <br> 
 <br> 
 <br> 
+<!-- This is where the big table with the colors is made -->
 <?php
 if (isset($rows) && isset($cols)) {
     $alphabet = range('A', 'Z');
@@ -133,45 +171,52 @@ if (isset($rows) && isset($cols)) {
 }
 ?>
 
+
 <script>
-function checkSelection(selectElement) {
-  var colors = <?php echo json_encode($colors); ?>;
-  console.log('checkSelection called');
-  var selectedColor = selectElement.value;
-  var selectIndex = selectElement.parentNode.parentNode.rowIndex - 1;
-  var warningSpan = selectElement.parentNode.querySelector(".warning-color");
-  var isDuplicate = false;
-  
-  // Check if the selected color has already been selected
-  for (var i = 0; i < colors.length; i++) {
-    if (i !== selectIndex && selectedColor === colors[i]) {
-      selectElement.style.backgroundColor = "red";
-      warningSpan.style.display = "block";
-      isDuplicate = true;
-      break;
-    }
-  }
-  
-  if (!isDuplicate) {
-    selectElement.style.backgroundColor = "black";
-    warningSpan.style.display = "none";
-  } else {
-    // Check if the selected color is the same as the previously selected color
-    var previousColor = selectElement.getAttribute("data-previous-color");
-    if (selectedColor === previousColor) {
-      selectElement.style.backgroundColor = "black";
-      warningSpan.style.display = "none";
-      isDuplicate = false;
-    }
-  }
-  
-  if (!isDuplicate) {
-    selectElement.setAttribute("data-previous-color", selectedColor);
-  }
-  else {
-    selectElement.removeAttribute("data-previous-color");
-  }
-}
+// function checkSelection(selectElement) {
+//   var colors = <?php echo json_encode($colors); ?>;
+//   console.log('checkSelection called');
+//   var selectedColor = selectElement.value;
+//   var selectIndex = selectElement.parentNode.parentNode.rowIndex - 1;
+//   var warningSpan = selectElement.parentNode.querySelector(".warning-color");
+//   var isDuplicate = false;
+
+//   // Get the right column element
+//   var rightCol = document.getElementById("right-col-" + selectIndex);
+
+//   // Check if the selected color has already been selected
+//   for (var i = 0; i < colors.length; i++) {
+//     if (i !== selectIndex && selectedColor === colors[i]) {
+//       selectElement.style.backgroundColor = "red";
+//       warningSpan.style.display = "block";
+//       isDuplicate = true;
+//       break;
+//     }
+//   }
+
+//   if (!isDuplicate) {
+//     selectElement.style.backgroundColor = "black";
+//     warningSpan.style.display = "none";
+//   } else {
+//     // Check if the selected color is the same as the previously selected color
+//     var previousColor = selectElement.getAttribute("data-previous-color");
+//     if (selectedColor === previousColor) {
+//       selectElement.style.backgroundColor = "black";
+//       warningSpan.style.display = "none";
+//       isDuplicate = false;
+//     }
+//   }
+
+//   if (!isDuplicate) {
+//     selectElement.setAttribute("data-previous-color", selectedColor);
+//   }
+//   else {
+//     selectElement.removeAttribute("data-previous-color");
+//   }
+
+//   // Set the background color of the right column element
+//   rightCol.style.backgroundColor = selectedColor;
+// }
 </script>
 
 
