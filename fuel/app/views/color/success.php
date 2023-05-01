@@ -82,6 +82,7 @@
   .brown{
     background-color: brown;
   }
+
 </style>
 
 <button id="print-btn">Print</button>
@@ -149,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <!-- this is where the color dropdowns are made that now changes the color of teh right side when a new one is picked  -->
-  <table>
+  <table id = "firsttable">
   <?php for ($i = 0; $i < $color; $i++) { ?>
     <tr>
       <td>
@@ -176,6 +177,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <?php } ?>
 </table>
 
+
+
 <script>
   function updateColor(select) {
     var colorBox = select.parentNode.parentNode.querySelector('.color-box');
@@ -186,17 +189,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
 </script>  
 
-
-
- 
 </script>
-
-
 
 <br> 
 <br> 
 <br> 
 <!-- This is where the big table with the colors is made -->
+
+
 <?php
 if (isset($rows) && isset($cols)) {
     $alphabet = range('A', 'Z');
@@ -224,31 +224,68 @@ if (isset($rows) && isset($cols)) {
     echo '<p>Please enter the number of rows and columns in the form above.</p>';
 }
 ?>
+
   
 <!--Below is the script for changing colors in the table-->
 
 <script>
-  var color = ".pink";
-  var colorName = "pink";
-  var prev = "pink";
+
+// const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+// radioButtons.forEach(radioButton => {
+//   radioButton.addEventListener('change', () => {
+//     const selectedOption = document.querySelector('input[type="radio"]:checked').value;
+//     console.log(selectedOption);
+//   });
+// });
+
+  let color = ".red";
+  let colorName = "red";
+  let prev = "red";
+  //insted of clicking the first table make it based off the radio buttons
+  $(document).ready(function(){
+  $("input[type='radio']").change(function(){
+    let clicked = $(this).closest('td');
+    let cellIn = clicked[0].cellIndex;
+    let rowIn = clicked[0].parentNode.rowIndex;
+    if(clicked.is(color)){
+      //$(clicked).removeAttr('class');
+      // color = "." + clicked.attr('class');
+      // colorName = clicked.attr('class');
+      color = "." + this.closest('td').querySelector('.colordrop').value;
+      colorName = this.closest('td').querySelector('.colordrop').value;
+    }
+    else{
+      //$(clicked).attr('class', colorName);
+      // color = "." + clicked.attr('class');
+      // colorName = clicked.attr('class');
+      color = "." + this.closest('td').querySelector('.colordrop').value;
+      colorName = this.closest('td').querySelector('.colordrop').value;
+    }
+    prev = colorName;
+  });
+});
+
+
   $(document).ready(function(){
   
-      var row2 = 0;
-      var cell2 = 0;
+      let row2 = 0;
+      let cell2 = 0;
       const Main = document.getElementById('main').rows[row2].cells[cell2];
-      var row2up = row2 + 1;
-      var row2down = row2 - 1;
+      let row2up = row2 + 1;
+      let row2down = row2 - 1;
       $("#main td").click(function(){
-          var clicked2 = $(this);
-          var cellIn = this.cellIndex;
+          let clicked2 = $(this);
+          let cellIn = this.cellIndex;
           
-          
-          if(clicked2.is(color)){
-              $(clicked2).removeAttr('class');
+          if(cellIn == 0 || this.parentNode.rowIndex == 0){
+            return;
+          }
+          else if(clicked2.is(color)){
+            $(clicked2).removeAttr('class');
           }
           else{
-              $(clicked2).attr('class', colorName);
-              
+            $(clicked2).attr('class', colorName);
           }
       });
 
@@ -257,6 +294,7 @@ if (isset($rows) && isset($cols)) {
 
 
 <script>
+
 // function checkSelection(selectElement) {
 //   var colors = <?php echo json_encode($colors); ?>;
 //   console.log('checkSelection called');
@@ -301,6 +339,7 @@ if (isset($rows) && isset($cols)) {
 //   // Set the background color of the right column element
 //   rightCol.style.backgroundColor = selectedColor;
 // }
+
 </script>
 
 
