@@ -23,7 +23,7 @@
     <ul>
         <li><a href="index"> Home</a></li>
         <li><a href="about"> About</a></li>
-        <li><a href="color"> Color Corrdinator</a></li>
+        <li><a href="color"> Color Coordinator</a></li>
 </ul>
 </nav>
 
