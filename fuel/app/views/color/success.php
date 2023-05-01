@@ -94,12 +94,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <option value="<?php echo $c; ?>" <?php echo ($c === $colors[$i]) ? 'selected' : ''; ?>><?php echo $c; ?></option>
           <?php } ?>
         </select>
-        <span class="warning">Please select a different color.</span>
+        <span class="warning-color">Please select a different color.</span>
           </td>
       <td class="right-col"><span style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span> <?php echo $colors[$i]; ?></td>
     </tr>
   <?php } ?>
 </table> 
+
 
 <br> 
 <br> 
@@ -108,7 +109,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if (isset($rows) && isset($cols)) {
     $alphabet = range('A', 'Z');
     $size = min($rows, $cols);
-//    a wild benito has appeared
     echo '<table>';
 
     // generate the header row with letters A to Z
@@ -139,114 +139,40 @@ function checkSelection(selectElement) {
   console.log('checkSelection called');
   var selectedColor = selectElement.value;
   var selectIndex = selectElement.parentNode.parentNode.rowIndex - 1;
-  var warningSpan = selectElement.parentNode.querySelector(".warning");
+  var warningSpan = selectElement.parentNode.querySelector(".warning-color");
+  var isDuplicate = false;
+  
   // Check if the selected color has already been selected
   for (var i = 0; i < colors.length; i++) {
     if (i !== selectIndex && selectedColor === colors[i]) {
       selectElement.style.backgroundColor = "red";
       warningSpan.style.display = "block";
-      return;
-    }
-
-    else{  
-      selectElement.style.backgroundColor = "";
-  warningSpan.style.display = "none";
+      isDuplicate = true;
+      break;
     }
   }
+  
+  if (!isDuplicate) {
+    selectElement.style.backgroundColor = "black";
+    warningSpan.style.display = "none";
+  } else {
+    // Check if the selected color is the same as the previously selected color
+    var previousColor = selectElement.getAttribute("data-previous-color");
+    if (selectedColor === previousColor) {
+      selectElement.style.backgroundColor = "black";
+      warningSpan.style.display = "none";
+      isDuplicate = false;
+    }
+  }
+  
+  if (!isDuplicate) {
+    selectElement.setAttribute("data-previous-color", selectedColor);
+  }
+  else {
+    selectElement.removeAttribute("data-previous-color");
+  }
 }
-
 </script>
-
-<!-- //     $rowsandcols = isset($rowsandcols) ? $rowsandcols : '';
-//     $colors = isset($colors) ? $colors : '';
-//     /*$data = array(
-//         $rowsandcols = isset($rowsandcols) ? $rowsandcols : '',
-//         $colors = isset($colors) ? $colors : ''
-//     );
-//     */
-
-//     // Color Options Array
-//     $coloroptions=array(
-//         'red' => 'Red',
-//         'orange' => 'Orange',
-//         'yellow' => 'Yellow',
-//         'green' => 'Green',
-//         'blue' => 'Blue',
-//         'purple' => 'Purple',
-//         'grey' => 'Grey',
-//         'brown' => 'Brown',
-//         'black' => 'Black',
-//         'teal' => 'Teal'
-//     );
-
-
-//     // Empty Array to hold selected colors
-//     $selectedcolors = array();
-
-//     // Generate Color Table
-//     if($rows && $colors && $cols)
-//     {
-//         // Upper Table
-//         echo '<table>';
-//         for($i = 1; $i <= $colors; $i++)
-//         {
-//             echo '<tr>';
-//             echo '<td style="width: 20%;">Color ' . $i . ':</td>';
-//             echo '<td style="width: 80%;">';
-//             echo Form::select('color' . $i, $coloroptions, isset($selectedcolors[$i]) ? $selectedcolors[i] : '');
-//             echo '</td>';
-//             echo '</tr>';
-//         }
-//         echo '</table>';
-
-//         // Lower Table
-//         echo '<table>';
-//         echo '<tr>';
-//         echo '<td></td>';
-//         for($i = 1; $i <= $rows ; $i++)
-//         {
-//             // convert number to letter
-//             $letter = chr($i + 64);
-//             echo '<td>' . $letter . '</td>';
-//         }
-//         echo '</tr>';
-//         // Generate the data rows
-//         for ($i = 1; $i <= $rowscolumns; $i++)
-//         {
-//             echo '<tr>';
-//             echo '<td>' . $i . '</td>';
-//             for ($j = 1; $j <= $rowscolumns; $j++)
-//             {
-//                 echo '<td></td>';
-//             }
-//             echo '</tr>';
-//         }
-//         echo '</table>';
-//     }
-// ?>
-
-
-
-
-  <table>
-<?php for ($i = 0; $i < $color; $i++) { ?>
-        <tr>
-         <td class="left-col">Color <?php echo $i+1; ?></td>
-        <td class="right-col">
-            <table>
-         <?php for ($j = 0; $j < $rows; $j++) { ?>
-                <tr>
-                <?php for ($k = 0; $k < $cols; $k++) { ?>
-                <td><?php echo $colors[$i]; ?></td>
-                
-                <?php } ?>
-                </tr>
-            <?php } ?>
-            </table>
-            </td>
-          </tr>
-      <?php } ?>
-  </table> 
 
 
 
