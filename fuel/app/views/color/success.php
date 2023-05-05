@@ -341,12 +341,35 @@ if (isset($rows) && isset($cols)) {
   });
 
   // When a color is selected from the dropdown, update the color and colorName variables
+  // $(".colordrop").change(function() {
+  //   const selectedColor = $(this).val();
+  //   color = "." + selectedColor;
+  //   colorName = selectedColor;
+  //   prev = colorName;
+  // });
+
   $(".colordrop").change(function() {
-    const selectedColor = $(this).val();
+  const selectedColor = $(this).val();
+  if ($(".colordrop").filter(function() {
+    return this.value === selectedColor;
+  }).length > 1) {
+    // If there is more than one dropdown with the same color, show a message to switch it back
+    $(this).val("");
+    const message = selectedColor + " is already selected. Please choose a different color.";
+    const errorElement = $("<div>").addClass("error-message").text(message);
+    $(this).closest("td").append(errorElement);
+    setTimeout(function() {
+      errorElement.fadeOut(400, function() {
+        $(this).remove();
+      });
+    }, 2000);
+  } else {
     color = "." + selectedColor;
     colorName = selectedColor;
     prev = colorName;
-  });
+  }
+});
+
 
   //When a cell is clicked, update the cell color and text
   $("#main td").click(function() {
