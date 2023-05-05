@@ -20,7 +20,7 @@ header p
 {
 	font-weight: normal;
 	font-size: 20px;
-	text-align: center;
+	text-align: left;
 	margin-right: 8%;
 }
 header h1
@@ -138,15 +138,30 @@ button:active {
 }
 
 #header{
-  font-size: 36px;
+  font-size: 72px;
   margin: 0;
   padding: 1em;
   color: #fff;
   text-align: center;
+  text-shadow: #110f21;
 }
 
 #helpme{
-	text-align: center;
+	display: block;
+	text-align: left;
 	width: 70%;
 	display: inline;
+	font-size: 120%;
+	margin-left: 20%;
+}
+
+#book img{
+	height: 500px;
+	width: 500px;
+	float: right;
+	border: none;
+}
+
+h2{
+	font-size:180%;
 }
