@@ -170,8 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </select>
       </td>
       <td class="right-col">
+      
         <span class="color-box" style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="color-label"><?php echo $colors[$i]; ?></span>
+        <span class="color-label"><?php echo $colors[$i]; ?></span>  
       </td>
     </tr>
   <?php } ?>
@@ -180,18 +181,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <script>
-  function updateColor(select) {
-    // var colorBox = select.parentNode.parentNode.querySelector('.color-box');
-    // var colorLabel = select.parentNode.parentNode.querySelector('.color-label');
-    // colorBox.style.backgroundColor = select.value;
-    // colorLabel.textContent = select.value;
+   function updateColor(select) {
+ 
     var colorBox = $(select).closest('tr').find('.color-box');
+    var colorLabel = $(select).closest('tr').find('.color-label');
+    colorBox.css('background-color', select.value);
+    colorLabel.text(select.value);
+
+  //   var colorBox = $(select).closest('tr').find('.color-box');
+  // var colorLabel = $(select).closest('tr').find('.color-label');
+  // var coordsLabel = $(select).closest('tr').find('.coords-label');
+  // colorBox.css('background-color', select.value);
+  // colorLabel.text(select.value);
+  // coordsLabel.text('');
+  
+  var colorBox = $(select).closest('tr').find('.color-box');
   var colorLabel = $(select).closest('tr').find('.color-label');
   colorBox.css('background-color', select.value);
   colorLabel.text(select.value);
-    
-  }
   
+  var rowIn = $(select).closest('tr')[0].rowIndex;
+  var cellIn = $(select).closest('td')[0].cellIndex;
+  var coordsLabel = $(select).closest('tr').find('.coords-label');
+  coordsLabel.text('(' + rowIn + ', ' + cellIn + ')');
+    
+   }
+  
+ 
 </script>  
 
 </script>
@@ -272,18 +288,18 @@ if (isset($rows) && isset($cols)) {
 // });
 
   // need to make it update when color is changed on selected row in dropdown
-  $(document).ready(function(){
-  $("input[type='radio']").change(function(){
-    let selectedColor = $(this).closest('tr').find('.colordrop').val();
-    let clicked = $(this).closest('td');
-    let cellIn = clicked[0].cellIndex;
-    let rowIn = clicked[0].parentNode.rowIndex;
+//   $(document).ready(function(){
+//   $("input[type='radio']").change(function(){
+//     let selectedColor = $(this).closest('tr').find('.colordrop').val();
+//     let clicked = $(this).closest('td');
+//     let cellIn = clicked[0].cellIndex;
+//     let rowIn = clicked[0].parentNode.rowIndex;
 
-      color = "." + selectedColor;
-      colorName = selectedColor;
-      prev = colorName;
-  });
-});
+//       color = "." + selectedColor;
+//       colorName = selectedColor;
+//       prev = colorName;
+//   });
+// });
 
 
   // $(document).ready(function(){
@@ -332,7 +348,7 @@ if (isset($rows) && isset($cols)) {
     prev = colorName;
   });
 
-  // When a cell is clicked, update the cell color and text
+  //When a cell is clicked, update the cell color and text
   $("#main td").click(function() {
     const cell = $(this);
     const rowIn = this.parentNode.rowIndex;
@@ -350,8 +366,12 @@ if (isset($rows) && isset($cols)) {
       const colorLabel = cell.find('.color-label');
       colorBox.css('background-color', colorName);
       colorLabel.text(colorName);
+      const coordsLabel = $(color).closest('tr').find('.coords-label');
+      coordsLabel.text('(' + rowIn + ', ' + cellIn + ')');
     }
   });
+
+
 });
 
   </script>
