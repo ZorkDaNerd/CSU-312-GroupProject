@@ -181,10 +181,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <script>
   function updateColor(select) {
-    var colorBox = select.parentNode.parentNode.querySelector('.color-box');
-    var colorLabel = select.parentNode.parentNode.querySelector('.color-label');
-    colorBox.style.backgroundColor = select.value;
-    colorLabel.textContent = select.value;
+    // var colorBox = select.parentNode.parentNode.querySelector('.color-box');
+    // var colorLabel = select.parentNode.parentNode.querySelector('.color-label');
+    // colorBox.style.backgroundColor = select.value;
+    // colorLabel.textContent = select.value;
+    var colorBox = $(select).closest('tr').find('.color-box');
+  var colorLabel = $(select).closest('tr').find('.color-label');
+  colorBox.css('background-color', select.value);
+  colorLabel.text(select.value);
+    
   }
   
 </script>  
@@ -239,9 +244,9 @@ if (isset($rows) && isset($cols)) {
 //   });
 // });
 
-  let color = ".red";
-  let colorName = "red";
-  let prev = "red";
+  // let color = ".red";
+  // let colorName = "red";
+  // let prev = "red";
   //insted of clicking the first table make it based off the radio buttons
 //   $(document).ready(function(){
 //   $("input[type='radio']").change(function(){
@@ -281,30 +286,74 @@ if (isset($rows) && isset($cols)) {
 });
 
 
-  $(document).ready(function(){
+  // $(document).ready(function(){
   
-      let row2 = 0;
-      let cell2 = 0;
-      const Main = document.getElementById('main').rows[row2].cells[cell2];
-      let row2up = row2 + 1;
-      let row2down = row2 - 1;
-      $("#main td").click(function(){
-          let clicked2 = $(this);
-          let cellIn = this.cellIndex;
-          let rowIn = this.parentNode.rowIndex; //rowIn and cellIn will be needed for coordinates later
+  //     let row2 = 0;
+  //     let cell2 = 0;
+  //     const Main = document.getElementById('main').rows[row2].cells[cell2];
+  //     let row2up = row2 + 1;
+  //     let row2down = row2 - 1;
+  //     $("#main td").click(function(){
+  //         let clicked2 = $(this);
+  //         let cellIn = this.cellIndex;
+  //         let rowIn = this.parentNode.rowIndex; //rowIn and cellIn will be needed for coordinates later
           
-          if(cellIn == 0 || this.parentNode.rowIndex == 0){
-            return;
-          }
-          else if(clicked2.is(color)){
-            $(clicked2).removeAttr('class');
-          }
-          else{
-            $(clicked2).attr('class', colorName);
-          }
-      });
+  //         if(cellIn == 0 || this.parentNode.rowIndex == 0){
+  //           return;
+  //         }
+  //         else if(clicked2.is(color)){
+  //           $(clicked2).removeAttr('class');
+  //         }
+  //         else{
+  //           $(clicked2).attr('class', colorName);
+  //         }
+  //     });
 
+  // });
+
+  $(document).ready(function() {
+  let color = ".red";
+  let colorName = "red";
+  let prev = "red";
+
+  // When a radio button is clicked, update the color and colorName variables
+  $("input[type='radio']").change(function() {
+    const selectedColor = $(this).closest('tr').find('.colordrop').val();
+    color = "." + selectedColor;
+    colorName = selectedColor;
+    prev = colorName;
   });
+
+  // When a color is selected from the dropdown, update the color and colorName variables
+  $(".colordrop").change(function() {
+    const selectedColor = $(this).val();
+    color = "." + selectedColor;
+    colorName = selectedColor;
+    prev = colorName;
+  });
+
+  // When a cell is clicked, update the cell color and text
+  $("#main td").click(function() {
+    const cell = $(this);
+    const rowIn = this.parentNode.rowIndex;
+    const cellIn = this.cellIndex;
+    const isHeaderRow = rowIn === 0 || cellIn === 0;
+    if (!isHeaderRow) {
+      if (cell.hasClass(colorName)) {
+        cell.removeClass(colorName);
+      } else {
+        cell.removeClass(prev);
+        cell.addClass(colorName);
+      }
+      prev = colorName;
+      const colorBox = cell.find('.color-box');
+      const colorLabel = cell.find('.color-label');
+      colorBox.css('background-color', colorName);
+      colorLabel.text(colorName);
+    }
+  });
+});
+
   </script>
 
 
