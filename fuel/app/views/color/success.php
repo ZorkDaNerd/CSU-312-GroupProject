@@ -170,9 +170,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </select>
       </td>
       <td class="right-col">
-      
         <span class="color-box" style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span class="color-label"><?php echo $colors[$i]; ?></span>  
+      </td>
+      <td>
+        Cells of color: <span class="coords-label"></span> 
       </td>
     </tr>
   <?php } ?>
@@ -251,81 +253,8 @@ if (isset($rows) && isset($cols)) {
 
 <script>
 
-// const radioButtons = document.querySelectorAll('input[type="radio"]');
 
-// radioButtons.forEach(radioButton => {
-//   radioButton.addEventListener('change', () => {
-//     const selectedOption = document.querySelector('input[type="radio"]:checked').value;
-//     console.log(selectedOption);
-//   });
-// });
-
-  // let color = ".red";
-  // let colorName = "red";
-  // let prev = "red";
-  //insted of clicking the first table make it based off the radio buttons
-//   $(document).ready(function(){
-//   $("input[type='radio']").change(function(){
-//     let clicked = $(this).closest('td');
-//     let cellIn = clicked[0].cellIndex;
-//     let rowIn = clicked[0].parentNode.rowIndex;
-//     if(clicked.is(color)){
-//       //$(clicked).removeAttr('class');
-//       // color = "." + clicked.attr('class');
-//       // colorName = clicked.attr('class');
-//       color = "." + this.closest('select').querySelector('.colordrop').value;
-//       colorName = this.closest('select').querySelector('.colordrop').value;
-//     }
-//     else{
-//       //$(clicked).attr('class', colorName);
-//       // color = "." + clicked.attr('class');
-//       // colorName = clicked.attr('class');
-//       color = "." + this.closest('select').querySelector('.colordrop').value;
-//       colorName = this.closest('select').querySelector('.colordrop').value;
-//     }
-//     prev = colorName;
-//   });
-// });
-
-  // need to make it update when color is changed on selected row in dropdown
-//   $(document).ready(function(){
-//   $("input[type='radio']").change(function(){
-//     let selectedColor = $(this).closest('tr').find('.colordrop').val();
-//     let clicked = $(this).closest('td');
-//     let cellIn = clicked[0].cellIndex;
-//     let rowIn = clicked[0].parentNode.rowIndex;
-
-//       color = "." + selectedColor;
-//       colorName = selectedColor;
-//       prev = colorName;
-//   });
-// });
-
-
-  // $(document).ready(function(){
   
-  //     let row2 = 0;
-  //     let cell2 = 0;
-  //     const Main = document.getElementById('main').rows[row2].cells[cell2];
-  //     let row2up = row2 + 1;
-  //     let row2down = row2 - 1;
-  //     $("#main td").click(function(){
-  //         let clicked2 = $(this);
-  //         let cellIn = this.cellIndex;
-  //         let rowIn = this.parentNode.rowIndex; //rowIn and cellIn will be needed for coordinates later
-          
-  //         if(cellIn == 0 || this.parentNode.rowIndex == 0){
-  //           return;
-  //         }
-  //         else if(clicked2.is(color)){
-  //           $(clicked2).removeAttr('class');
-  //         }
-  //         else{
-  //           $(clicked2).attr('class', colorName);
-  //         }
-  //     });
-
-  // });
 
   $(document).ready(function() {
   let color = ".red";
@@ -347,7 +276,7 @@ if (isset($rows) && isset($cols)) {
   //   colorName = selectedColor;
   //   prev = colorName;
   // });
-
+    // This will also tell the user if they have the same color in two drop downs so they can change it 
   $(".colordrop").change(function() {
   const selectedColor = $(this).val();
   if ($(".colordrop").filter(function() {
@@ -400,54 +329,6 @@ if (isset($rows) && isset($cols)) {
   </script>
 
 
-<script>
-
-// function checkSelection(selectElement) {
-//   var colors = <?php echo json_encode($colors); ?>;
-//   console.log('checkSelection called');
-//   var selectedColor = selectElement.value;
-//   var selectIndex = selectElement.parentNode.parentNode.rowIndex - 1;
-//   var warningSpan = selectElement.parentNode.querySelector(".warning-color");
-//   var isDuplicate = false;
-
-//   // Get the right column element
-//   var rightCol = document.getElementById("right-col-" + selectIndex);
-
-//   // Check if the selected color has already been selected
-//   for (var i = 0; i < colors.length; i++) {
-//     if (i !== selectIndex && selectedColor === colors[i]) {
-//       selectElement.style.backgroundColor = "red";
-//       warningSpan.style.display = "block";
-//       isDuplicate = true;
-//       break;
-//     }
-//   }
-
-//   if (!isDuplicate) {
-//     selectElement.style.backgroundColor = "black";
-//     warningSpan.style.display = "none";
-//   } else {
-//     // Check if the selected color is the same as the previously selected color
-//     var previousColor = selectElement.getAttribute("data-previous-color");
-//     if (selectedColor === previousColor) {
-//       selectElement.style.backgroundColor = "black";
-//       warningSpan.style.display = "none";
-//       isDuplicate = false;
-//     }
-//   }
-
-//   if (!isDuplicate) {
-//     selectElement.setAttribute("data-previous-color", selectedColor);
-//   }
-//   else {
-//     selectElement.removeAttribute("data-previous-color");
-//   }
-
-//   // Set the background color of the right column element
-//   rightCol.style.backgroundColor = selectedColor;
-// }
-
-</script>
 
 
 
