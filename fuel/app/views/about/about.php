@@ -9,9 +9,11 @@
 		</title>
 	</head>
 	<body>
-		<p>
+		<h1>
 			We are Necronomicompany, call us for any servant you need on earth
-		</p>
+		</h1>
+		<hr>
+		<br>
 		<h1>About Us</h1>
 		<div class="person">
 		<?php echo Asset::img("linoscows.jpg"); ?>
@@ -32,7 +34,7 @@
 		</div>
 		<div class="person">
 		<?php echo Asset::img("abii.png"); ?>
-		<h2>Abii</h2>
+		<h2>Abii Franke</h2>
 		<p>
 			Developer of Necronomicompany and absolutely not an avatar of Hastur, the King in Yellow, whose name is 
 			unspeakable and whose influence is endless. Stop asking.

@@ -21,7 +21,6 @@ header p
 	font-weight: normal;
 	font-size: 20px;
 	text-align: center;
-	font-style: italic;
 	margin-right: 8%;
 }
 header h1
@@ -139,24 +138,16 @@ button:active {
 }
 
 #header{
-  font-size: 36px;
+  font-size: 72px;
   margin: 0;
   padding: 1em;
   color: #fff;
   text-align: center;
+  text-shadow: #110f21;
 }
 
-#helpme {
+#helpme{
 	text-align: center;
 	width: 70%;
-	margin: 50px auto;
-	padding: 20px;
-	background-color: #647C90;
-	border: 5px solid #E2DED0;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 20px;
-	color: #333;
-  }
-#helpme p{
-	
+	display: inline;
 }
