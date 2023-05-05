@@ -9,9 +9,11 @@
 		</title>
 	</head>
 	<body>
-		<p>
+		<h1>
 			We are Necronomicompany, call us for any servant you need on earth
-		</p>
+		</h1>
+		<hr>
+		<br>
 		<h1>About Us</h1>
 		<div class="person">
 		<?php echo Asset::img("linoscows.jpg"); ?>
