@@ -87,6 +87,7 @@
 
 <button id="print-btn">Print</button>
 <script>
+  // this is everything to do with the print button
     const printBtn = document.querySelector('#print-btn');
   const pageBody = document.querySelector('body');
   const pageNav = document.querySelector('nav');
@@ -149,12 +150,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </table>    -->
 
 
+
 <!-- this is where the color dropdowns are made that now changes the color of teh right side when a new one is picked  -->
+
+
   <table id = "firsttable">
   <?php for ($i = 0; $i < $color; $i++) { ?>
     <tr>
       <td>
         <?php
+        // make the first radio button cheched
           if ($i == 0) {
             echo '<input type="radio" name="color" value="' . $colors[$i] . '" checked>';
           } else {
@@ -163,6 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           ?>
       </td>
       <td class="left-col">Color <?php echo $i+1; ?>
+      <!-- this is where we change the dropdown -->
         <select class="colordrop" onchange="updateColor(this)" title="selectcolor">
           <?php foreach ($colors as $c) { ?>
             <option value="<?php echo $c; ?>" <?php echo ($c === $colors[$i]) ? 'selected' : ''; ?>><?php echo $c; ?></option>
@@ -170,11 +176,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </select>
       </td>
       <td class="right-col">
+            <!-- this is where we show the current color -->
         <span class="color-box" style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <span class="color-label"><?php echo $colors[$i]; ?></span>  
       </td>
       <td>
-        Cells of color: <span class="coords-label"></span> 
+
       </td>
     </tr>
   <?php } ?>
@@ -210,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    }
   
  
-</script>  
+</>  
 
 </script>
 
@@ -249,19 +256,17 @@ if (isset($rows) && isset($cols)) {
 ?>
 
   
+
 <!--Below is the script for changing colors in the table-->
 
 <script>
-
-
-  
-
+  // default settings
   $(document).ready(function() {
   let color = ".red";
   let colorName = "red";
   let prev = "red";
 
-  // When a radio button is clicked, update the color and colorName variables
+    // radio buttons
   $("input[type='radio']").change(function() {
     const selectedColor = $(this).closest('tr').find('.colordrop').val();
     color = "." + selectedColor;
@@ -269,21 +274,14 @@ if (isset($rows) && isset($cols)) {
     prev = colorName;
   });
 
-  // When a color is selected from the dropdown, update the color and colorName variables
-  // $(".colordrop").change(function() {
-  //   const selectedColor = $(this).val();
-  //   color = "." + selectedColor;
-  //   colorName = selectedColor;
-  //   prev = colorName;
-  // });
-    // This will also tell the user if they have the same color in two drop downs so they can change it 
+  // color drop down
   $(".colordrop").change(function() {
   const selectedColor = $(this).val();
   if ($(".colordrop").filter(function() {
     return this.value === selectedColor;
   }).length > 1) {
-    // If there is more than one dropdown with the same color, show a message to switch it back
     $(this).val("");
+    // throws error if numbers arent in spec
     const message = selectedColor + " is already selected. Please choose a different color.";
     const errorElement = $("<div>").addClass("error-message").text(message);
     $(this).closest("td").append(errorElement);
@@ -299,8 +297,8 @@ if (isset($rows) && isset($cols)) {
   }
 });
 
-
-  //When a cell is clicked, update the cell color and text
+ //this is where we change and update the cell colors
+ // we also make it so you cant color the upper and left most coomns 
   $("#main td").click(function() {
     const cell = $(this);
     const rowIn = this.parentNode.rowIndex;
@@ -322,14 +320,5 @@ if (isset($rows) && isset($cols)) {
       coordsLabel.text('(' + rowIn + ', ' + cellIn + ')');
     }
   });
-
-
 });
-
   </script>
-
-
-
-
-
-
