@@ -14,8 +14,8 @@
     <div id="headLogo">
 	    <?php echo Asset::img("nc.svg"); ?>
     </div>
-		<h1>NECRONOMICOMPANY<h1>
-		<p>Serving the Great Old Ones Since 5071 BCE</p>
+		<h1>NECRONOMICOMPANY</h1>
+		<p>&nbsp;&nbsp;&nbsp;Serving the Great Old Ones Since 5071 BCE</p>
 </header>
                                                  <!-- Replace with your id -->
 
