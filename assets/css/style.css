@@ -108,3 +108,17 @@ button:active {
 		display: none;
 	}
 }
+
+#header{
+  font-size: 36px;
+  margin: 0;
+  padding: 1em;
+  color: #fff;
+  text-align: center;
+}
+
+#helpme{
+	text-align: center;
+	width: 70%;
+	display: inline;
+}
