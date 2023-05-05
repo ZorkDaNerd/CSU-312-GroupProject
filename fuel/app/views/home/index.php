@@ -4,6 +4,7 @@
 </head>
 	<body>
 		<h1 id ="header">Welcome to Necronomicompany</h1>
+		<hr>
 		<div id = "helpme"> 
 		<p>
 			Welcome to Necronomicompany, your first and best stop for purchasing your very own Necronomicon and associated products 
