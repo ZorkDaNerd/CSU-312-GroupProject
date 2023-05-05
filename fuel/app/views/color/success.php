@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html>
+<link rel="icon" href="https://game-icons.net/icons/000000/transparent/1x1/lorc/potion-ball.png">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-<h1> Color Coordinator pass </h1> 
+<h1> Color Coordinator Coloring Page </h1> 
 <style>
+  .warning {
+  display: none;
+  color: red;
+  font-size: 12px;
+}
+.colordrop[style*="background-color: red;"] {
+  border: 1px solid red;
+}
   table {
       width: 80%;
       border-collapse: collapse;
@@ -21,10 +31,63 @@
   .right-col {
       width: 80%;
   }
+
+  .colordrop{
+    background-color: black;
+    color: white;
+  }
+  
+    
+
+  #main{
+      border: 1px solid gray;
+  }
+
+  .red{
+    background-color: red;
+  }
+
+  .green{
+    background-color: green;
+  }
+
+  .blue{
+    background-color: blue;
+  }
+
+  .yellow{
+    background-color: yellow;
+  }
+
+  .purple{
+    background-color: purple;
+  }
+
+  .orange{
+    background-color: orange;
+  }
+
+  .teal{
+    background-color: teal;
+  }
+
+  .pink{
+    background-color: pink;
+  }
+
+  .gray{
+    background-color: gray;
+  }
+
+  .brown{
+    background-color: brown;
+  }
+
 </style>
 
 <button id="print-btn">Print</button>
 <script>
+  // this is everything to do with the print button
     const printBtn = document.querySelector('#print-btn');
   const pageBody = document.querySelector('body');
   const pageNav = document.querySelector('nav');
@@ -63,47 +126,112 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   );?>
 
 <body>
-<!-- <?php if (isset($rows) && isset($cols) && isset($color)) { ?>
-  <table>
-      <?php for ($i = 0; $i < $color; $i++) { ?>
-        <tr>
-         <td class="left-col">Color <?php echo $i+1; ?></td>
-        <td class="right-col">
-            <table>
-         <?php for ($j = 0; $j < $rows; $j++) { ?>
-                <tr>
-                <?php for ($k = 0; $k < $cols; $k++) { ?>
-                <td><?php echo $colors[$i]; ?></td>
-                <?php } ?>
-                </tr>
-            <?php } ?>
-            </table>
-            </td>
-          </tr>
-      <?php } ?>
-  </table>
+ <?php if (isset($rows) && isset($cols) && isset($color)) { ?>
 <?php } else { ?>
   <p>Please enter the number of rows, columns, and colors in the form above.</p>
-<?php } ?> -->
+<?php } ?> 
 
-
-<table>
-  <?php for ($i = 0; $i < $color; $i++) { ?>
+<!-- 
+  <table>
+  <?php for ($i = 0; $i < $color; $i++) { 
+    ?>
     <tr>
-      <td class="left-col">Color <?php echo $i+1; ?></td>
+      <td class="left-col">Color <?php echo $i+1; ?>
+      <select class = "colordrop" onchange="checkSelection(this)" title = "selectcolor">
+          <?php foreach ($colors as $c) { ?>
+            <option value="<?php echo $c; ?>" <?php echo ($c === $colors[$i]) ? 'selected' : ''; ?>><?php echo $c; ?></option>
+          <?php } ?>
+        </select>
+        
+          </td>
       <td class="right-col"><span style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span> <?php echo $colors[$i]; ?></td>
     </tr>
   <?php } ?>
+</table>    -->
+
+
+
+<!-- this is where the color dropdowns are made that now changes the color of teh right side when a new one is picked  -->
+
+
+  <table id = "firsttable">
+  <?php for ($i = 0; $i < $color; $i++) { ?>
+    <tr>
+      <td>
+        <?php
+        // make the first radio button cheched
+          if ($i == 0) {
+            echo '<input type="radio" name="color" value="' . $colors[$i] . '" checked>';
+          } else {
+            echo '<input type="radio" name="color" value="' . $colors[$i] . '">';
+          }
+          ?>
+      </td>
+      <td class="left-col">Color <?php echo $i+1; ?>
+      <!-- this is where we change the dropdown -->
+        <select class="colordrop" onchange="updateColor(this)" title="selectcolor">
+          <?php foreach ($colors as $c) { ?>
+            <option value="<?php echo $c; ?>" <?php echo ($c === $colors[$i]) ? 'selected' : ''; ?>><?php echo $c; ?></option>
+          <?php } ?>
+        </select>
+      </td>
+      <td class="right-col">
+            <!-- this is where we show the current color -->
+        <span class="color-box" style="background-color:<?php echo $colors[$i]; ?>;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="color-label"><?php echo $colors[$i]; ?></span>  
+      </td>
+      <td>
+
+      </td>
+    </tr>
+  <?php } ?>
 </table>
+
+
+
+<script>
+   function updateColor(select) {
+ 
+    var colorBox = $(select).closest('tr').find('.color-box');
+    var colorLabel = $(select).closest('tr').find('.color-label');
+    colorBox.css('background-color', select.value);
+    colorLabel.text(select.value);
+
+  //   var colorBox = $(select).closest('tr').find('.color-box');
+  // var colorLabel = $(select).closest('tr').find('.color-label');
+  // var coordsLabel = $(select).closest('tr').find('.coords-label');
+  // colorBox.css('background-color', select.value);
+  // colorLabel.text(select.value);
+  // coordsLabel.text('');
+  
+  var colorBox = $(select).closest('tr').find('.color-box');
+  var colorLabel = $(select).closest('tr').find('.color-label');
+  colorBox.css('background-color', select.value);
+  colorLabel.text(select.value);
+  
+  var rowIn = $(select).closest('tr')[0].rowIndex;
+  var cellIn = $(select).closest('td')[0].cellIndex;
+  var coordsLabel = $(select).closest('tr').find('.coords-label');
+  coordsLabel.text('(' + rowIn + ', ' + cellIn + ')');
+    
+   }
+  
+ 
+ 
+
+</script>
+
 <br> 
 <br> 
 <br> 
+<!-- This is where the big table with the colors is made -->
+
+
 <?php
 if (isset($rows) && isset($cols)) {
     $alphabet = range('A', 'Z');
     $size = min($rows, $cols);
-//    a wild benito has appeared
-    echo '<table>';
+    echo '<table id = main>';
 
     // generate the header row with letters A to Z
     echo '<tr><td></td>';
@@ -127,78 +255,70 @@ if (isset($rows) && isset($cols)) {
 }
 ?>
 
+  
 
+<!--Below is the script for changing colors in the table-->
 
-<!-- //     $rowsandcols = isset($rowsandcols) ? $rowsandcols : '';
-//     $colors = isset($colors) ? $colors : '';
-//     /*$data = array(
-//         $rowsandcols = isset($rowsandcols) ? $rowsandcols : '',
-//         $colors = isset($colors) ? $colors : ''
-//     );
-//     */
+<script>
+  // default settings
+  $(document).ready(function() {
+  let color = ".red";
+  let colorName = "red";
+  let prev = "red";
 
-//     // Color Options Array
-//     $coloroptions=array(
-//         'red' => 'Red',
-//         'orange' => 'Orange',
-//         'yellow' => 'Yellow',
-//         'green' => 'Green',
-//         'blue' => 'Blue',
-//         'purple' => 'Purple',
-//         'grey' => 'Grey',
-//         'brown' => 'Brown',
-//         'black' => 'Black',
-//         'teal' => 'Teal'
-//     );
+    // radio buttons
+  $("input[type='radio']").change(function() {
+    const selectedColor = $(this).closest('tr').find('.colordrop').val();
+    color = "." + selectedColor;
+    colorName = selectedColor;
+    prev = colorName;
+  });
 
+  // color drop down
+  $(".colordrop").change(function() {
+  const selectedColor = $(this).val();
+  if ($(".colordrop").filter(function() {
+    return this.value === selectedColor;
+  }).length > 1) {
+    $(this).val("");
+    // throws error if numbers arent in spec
+    const message = selectedColor + " is already selected. Please choose a different color.";
+    const errorElement = $("<div>").addClass("error-message").text(message);
+    $(this).closest("td").append(errorElement);
+    setTimeout(function() {
+      errorElement.fadeOut(400, function() {
+        $(this).remove();
+      });
+    }, 2000);
+  } else {
+    color = "." + selectedColor;
+    colorName = selectedColor;
+    prev = colorName;
+  }
+});
 
-//     // Empty Array to hold selected colors
-//     $selectedcolors = array();
-
-//     // Generate Color Table
-//     if($rows && $colors && $cols)
-//     {
-//         // Upper Table
-//         echo '<table>';
-//         for($i = 1; $i <= $colors; $i++)
-//         {
-//             echo '<tr>';
-//             echo '<td style="width: 20%;">Color ' . $i . ':</td>';
-//             echo '<td style="width: 80%;">';
-//             echo Form::select('color' . $i, $coloroptions, isset($selectedcolors[$i]) ? $selectedcolors[i] : '');
-//             echo '</td>';
-//             echo '</tr>';
-//         }
-//         echo '</table>';
-
-//         // Lower Table
-//         echo '<table>';
-//         echo '<tr>';
-//         echo '<td></td>';
-//         for($i = 1; $i <= $rows ; $i++)
-//         {
-//             // convert number to letter
-//             $letter = chr($i + 64);
-//             echo '<td>' . $letter . '</td>';
-//         }
-//         echo '</tr>';
-//         // Generate the data rows
-//         for ($i = 1; $i <= $rowscolumns; $i++)
-//         {
-//             echo '<tr>';
-//             echo '<td>' . $i . '</td>';
-//             for ($j = 1; $j <= $rowscolumns; $j++)
-//             {
-//                 echo '<td></td>';
-//             }
-//             echo '</tr>';
-//         }
-//         echo '</table>';
-//     }
-// ?>
-
-// 
-
-
-
-
+ //this is where we change and update the cell colors
+ // we also make it so you cant color the upper and left most coomns 
+  $("#main td").click(function() {
+    const cell = $(this);
+    const rowIn = this.parentNode.rowIndex;
+    const cellIn = this.cellIndex;
+    const isHeaderRow = rowIn === 0 || cellIn === 0;
+    if (!isHeaderRow) {
+      if (cell.hasClass(colorName)) {
+        cell.removeClass(colorName);
+      } else {
+        cell.removeClass(prev);
+        cell.addClass(colorName);
+      }
+      prev = colorName;
+      const colorBox = cell.find('.color-box');
+      const colorLabel = cell.find('.color-label');
+      colorBox.css('background-color', colorName);
+      colorLabel.text(colorName);
+      const coordsLabel = $(color).closest('tr').find('.coords-label');
+      coordsLabel.text('(' + rowIn + ', ' + cellIn + ')');
+    }
+  });
+});
+  </script>

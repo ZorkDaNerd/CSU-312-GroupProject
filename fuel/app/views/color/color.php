@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html>
+<link rel="icon" href="https://game-icons.net/icons/000000/transparent/1x1/lorc/potion-ball.png">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<style> 
+.formcolor{
+  background-color: black;
+  color: white;
+}
+</style>
 
 <h1> Color Coordinator </h1> 
 
@@ -19,11 +28,11 @@
   });
 </script>
 
-  <form action='color' method='post'>
-    <p>num rows: <input type='number' name='rows' id='rows'/> enter a number between 1 and 26</p>
-    <p>num columns: <input type='number' name='cols' id='cols'/> enter a number between 1 and 26</p>
-    <p>num color: <input type='number' name='color' id='color'/> enter a number between 1 and 10</p>
-    <p><input type='submit'/></p>
+  <form action='color' method='post' class = "formcolor">
+    <p>num rows: <input type='number' name='rows' id='rows' class ="formcolor"/> enter a number between 1 and 26</p>
+    <p>num columns: <input type='number' name='cols' id='cols' class ="formcolor" /> enter a number between 1 and 26</p>
+    <p>num color: <input type='number' name='color' id='color' class ="formcolor"/> enter a number between 1 and 10</p>
+    <p><input type='submit' class ="formcolor"/></p>
     <?php
 
     echo Form::open(array('action' => 'index/necrocont/color',
