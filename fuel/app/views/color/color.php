@@ -29,9 +29,9 @@
 </script>
 
   <form action='color' method='post' class = "formcolor">
-    <p>num rows: <input type='number' name='rows' id='rows' class ="formcolor"/> enter a number between 1 and 26</p>
-    <p>num columns: <input type='number' name='cols' id='cols' class ="formcolor" /> enter a number between 1 and 26</p>
-    <p>num color: <input type='number' name='color' id='color' class ="formcolor"/> enter a number between 1 and 10</p>
+    <p>Num Rows: <input type='number' name='rows' id='rows' class ="formcolor"/> Enter a number between 1 and 26</p>
+    <p>Num Columns: <input type='number' name='cols' id='cols' class ="formcolor" /> Enter a number between 1 and 26</p>
+    <p>Num Color: <input type='number' name='color' id='color' class ="formcolor"/> Enter a number between 1 and 10</p>
     <p><input type='submit' class ="formcolor"/></p>
     <?php
 

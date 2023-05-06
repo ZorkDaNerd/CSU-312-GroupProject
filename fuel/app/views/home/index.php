@@ -6,7 +6,7 @@
 		<h1 id ="header">Welcome to Necronomicompany</h1>
 		<hr>
 		<div id = "helpme"> 
-		<p>
+		<p style="text-align: center;">
 			Welcome to Necronomicompany, your first and best stop for purchasing your very own Necronomicon and associated products 
 			for all your ritual, dark sacrifice, crafting, or cooking needs!
 		</p>
@@ -16,13 +16,13 @@
 		</div>
 
 		<h2> Our Mission</h2>
-		<p>
+		<p style="margin-left: 2%">
 			Our mission at Necronomicompany is to help our customers with whatever they need.  We here at Necronomicompany sell from only the finest of suppliers and are the only Nyarlathotep-approved sellers of the 
 			Necronomicons!*
 		</p>
 
 		
-		<p style = "font-size:70%">
+		<p style = "font-size:70%; margin-left: 2%">
 			*And by that we mean we were the only ones dumb enough to summon him over and over until he said yes. RIP 1,576 interns.
 		</p>
 
@@ -32,7 +32,7 @@
 
 		<h2>Quality Assurance</h2>
 			
-		<p>
+		<p style = "margin-left: 2%">
 			We hold ourselves to the highest standards, using only the finest quality paper and 
 			"technically vegan" leather. We have a 100% guarantee that your necronomicon will work perfectly and 
 			will not summon any dimensional shamblers or instances of the Haunter in the Dark. 
@@ -46,7 +46,7 @@
 		<br>
 		<br>
 
-		<p style = "font-size:70%">
+		<p style = "font-size:50%">
 			For legal reasons, this is a joke. No Necronomicons are actually sold here and do not read from strange books promising dark powers 
 			for your own safety and the safety of others. Yes, even if they promise you cupcakes.
 		</p>

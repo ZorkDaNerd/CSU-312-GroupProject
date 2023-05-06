@@ -5,23 +5,23 @@
 		<?php echo Asset::css("about.css"); ?>
 	<head>
 		<title>
-			About us
+			About Us
 		</title>
 	</head>
 	<body>
-		<h1>
-			We are Necronomicompany, call us for any servant you need on earth
+		<h1 style = "font-style: italic; text-align: center">
+			~We are Necronomicompany, call us for any service you need on earth~
 		</h1>
 		<hr>
 		<br>
-		<h1>About Us</h1>
+		<h1 style = "text-align: center;">About Us</h1>
 		<div class="person">
 		<?php echo Asset::img("linoscows.jpg"); ?>
 	
 		<h2>Lino Barrios</h2>
 		<p>
-			I serve the department of agriculture. I have worked in the past with beef mainly in the processing.
-			I have started learning this internet stuff lets see how I do. Make sure to eat beef. As one of 
+			I serve the department of agriculture. <br>I have worked in the past with beef mainly in the processing.
+			I have started learning this internet stuff lets see how I do. Make sure to eat beef. <br>As one of 
 			cofounders of this amazing  place with Zach. I am also a demigod who talks with nature.  
 		</p>
 		</div>
