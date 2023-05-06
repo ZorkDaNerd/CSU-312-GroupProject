@@ -24,7 +24,7 @@ header p
 	font-weight: normal;
 	font-size: 20px;
 	text-align: center;
-	margin-right: 15%;
+	margin-right: 9%;
 	display: flex;
 	justify-content: center;
 }
@@ -33,7 +33,7 @@ header h1
 	font-family: serif;
 	font-size: 70px;
 	text-align: center;
-	margin-right: 12%;
+	margin-right: 9%;
 }
 nav {
 	
